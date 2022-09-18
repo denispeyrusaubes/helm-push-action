@@ -50,6 +50,5 @@ helm dependency update .
 helm package .
 
 pwd
-ls
 
 helm cm-push ${CHART_FOLDER}-* ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE}
