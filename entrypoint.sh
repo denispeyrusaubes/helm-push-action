@@ -35,6 +35,12 @@ fi
 
 
 
+pwd
+
+echo "*************************"
+ls -R *
+echo "*************************"
+
 cd ${SOURCE_DIR}/${CHART_FOLDER}
 
 helm version -c
@@ -51,10 +57,5 @@ helm dependency update .
 helm package .
 
 
-pwd
-
-echo "*************************"
-ls -R *
-echo "*************************"
 
 helm cm-push domain-nc-0.1.0.tgz ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE}
