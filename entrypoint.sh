@@ -45,10 +45,16 @@ if [[ $CHARTMUSEUM_REPO_NAME ]]; then
   helm repo add ${CHARTMUSEUM_REPO_NAME} ${CHARTMUSEUM_URL} --username=${CHARTMUSEUM_USER} --password=${CHARTMUSEUM_PASSWORD}
 fi
 
+
 helm dependency update .
 
 helm package .
 
+
 pwd
+
+echo "*************************"
+ls -R *
+echo "*************************"
 
 helm cm-push domain-nc-0.1.0.tgz ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE}
