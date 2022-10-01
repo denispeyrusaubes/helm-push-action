@@ -33,9 +33,7 @@ elif [ "$FORCE" == "1" ] || [ "$FORCE" == "True" ] || [ "$FORCE" == "TRUE" ]; th
   FORCE="-f"
 fi
 
-
-
-cd ${SOURCE_DIR}/${CHART_FOLDER}
+cd ${SOURCE_DIR}
 
 helm version -c
 
@@ -50,13 +48,4 @@ helm dependency update .
 
 helm package .
 
-pwd
-
-echo "*************************"
-ls -R *
-echo "*************************"
-echo ${CHART_FOLDER}-* ${CHARTMUSEUM_URL}
-echo "*************************"
-
-
-helm cm-push domain-nc-0.1.0.tgz ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE}
+helm cm-push *.tgz ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE}
